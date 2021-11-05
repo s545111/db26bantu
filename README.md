@@ -1,7 +1,3 @@
-# fwb26bantu
-This is my tenth assignment
-<https://fwb26bantu.herokuapp.com/>
-
-Class Name : guitor
-
-Attributes : GBrand,Gcolor,GCost
+# db26bantu
+This is my 11 assignment
+<https://db26bantu.herokuapp.com/>
