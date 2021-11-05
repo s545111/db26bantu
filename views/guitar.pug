@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1= title
+  p guitars 
+  div(class="container-fluid")
+        div(class="row")
+            -
+                let details = [
+                    {
+                        "GBrand": "yamaha",
+                        "Gcolor": "Blue",
+                        "GCost": 500
+                    },
+
+                    {
+                        "GBrand": "gibson",
+                        "Gcolor": "White",
+                        "GCost": 950
+                    },
+                    {
+                        "GBrand": "taylor",
+                        "Gcolor": "Red",
+                        "GCost": 1100
+                    },                   
+                ]
+            each c,index in details
+                div(class="col-sm-2" onclick=`buy(${index})`) #{c.GBrand}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{c.Gcolor}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{c.GCost}
+
+                script.                
+                      function buy(itemNo)
+                      {
+                            alert(`You purchased item ${itemNo+1}`)
+                      }
