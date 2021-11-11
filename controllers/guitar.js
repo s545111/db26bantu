@@ -17,7 +17,7 @@ exports.guitar_create_post = async function (req, res) {
     // {"GBrand":"yamaha", "Gcolor":Blue", "Gcost":500}
     document.GBrand = req.body.GBrand;
     document.Gcolor = req.body.Gcolor;
-    document.Gcost = req.body.Gcost;
+    document.GCost = req.body.GCost;
     try {
         let result = await document.save();
         res.send(result);
