@@ -5,13 +5,5 @@ var router = express.Router();
 /* GET bottle */
 
 router.get('/', guitar_controlers.guitar_view_all_Page );
+router.get('/guitar/:id', guitar_controlers.guitar_detail);
 module.exports = router;
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('guitar', { title: 'Search Results guitar' });
-});
-
-module.exports = router;
-// GET request for one costume.
-router.get('/guitar/:id', guitar_controller.guitar_detail);
