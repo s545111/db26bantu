@@ -13,3 +13,5 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+// GET request for one costume.
+router.get('/guitar/:id', guitar_controller.guitar_detail);
