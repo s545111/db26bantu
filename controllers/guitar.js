@@ -62,34 +62,45 @@ exports.guitar_view_all_Page = async function (req, res) {
 };
 
 // for a specific Costume.
-exports.guitar_detail = async function(req, res) {
+exports.guitar_detail = async function (req, res) {
     console.log("detail" + req.params.id)
     try {
-    result = await Guitar.findById( req.params.id)
-    res.send(result)
+        result = await Guitar.findById(req.params.id)
+        res.send(result)
     } catch (error) {
-    res.status(500)
-    res.send(`{"error": document for id ${req.params.id} not found`);
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
     }
-   };
-
-   // Handle guitar update form on PUT.
-exports.guitar_update_put = async function(req, res) {
- console.log(`update on id ${req.params.id} with body
-${JSON.stringify(req.body)}`)
- try {
- let toUpdate = await Guitar.findById( req.params.id)
- // Do updates of properties
- if(req.body.guitar_type)
- toUpdate.GBrand = req.body.GBrand;
- if(req.body.Gcolor) toUpdate.Gcolor = req.body.Gcolor;
- if(req.body.GCost) toUpdate.GCost = req.body.GCost;
- let result = await toUpdate.save();
- console.log("Sucess " + result)
- res.send(result)
- } catch (err) {
- res.status(500)
- res.send(`{"error": ${err}: Update for id ${req.params.id}
-failed`);
- }
 };
+
+// Handle guitar update form on PUT.
+exports.guitar_update_put = async function (req, res) {
+    console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Guitar.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.guitar_type)
+            toUpdate.GBrand = req.body.GBrand;
+        if (req.body.Gcolor) toUpdate.Gcolor = req.body.Gcolor;
+        if (req.body.GCost) toUpdate.GCost = req.body.GCost;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
+};
+// Handle guitar delete on DELETE. 
+exports.guitar_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Guitar.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 
