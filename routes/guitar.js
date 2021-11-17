@@ -7,3 +7,5 @@ var router = express.Router();
 router.get('/', guitar_controlers.guitar_view_all_Page );
 router.get('/guitar/:id', guitar_controlers.guitar_detail);
 module.exports = router;
+/* GET detail costume page */ 
+router.get('/detail', guitar_controlers.guitar_view_one_Page);
