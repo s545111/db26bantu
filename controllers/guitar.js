@@ -117,3 +117,42 @@ exports.guitar_view_one_Page = async function(req, res) {
         res.send(`{'error': '${err}'}`); 
     } 
 };
+ // Handle building the view for creating a guitar. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.guitar_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('guitarcreate', { title: 'Guitar Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+// Handle building the view for updating a guitar. 
+// query provides the id 
+exports.guitar_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await Guitar.findById(req.query.id) 
+        res.render('guitarupdate', { title: 'Guitar Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+// Handle a delete one view with id from query 
+exports.guitar_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await Guitar.findById(req.query.id) 
+        res.render('guitardelete', { title: 'Guitar Delete', toShow: 
+result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 

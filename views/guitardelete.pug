@@ -1,0 +1,54 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let guitarid = toShow._id 
+    - let GBrand = toShow.GBrand 
+    - let Gcolor = toShow.Gcolor 
+    - let GCost = toShow.GCost
+    - let actionid = "/resource/costumes/" + guitarid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='guitarAttr mr-3') Guitar ID is: 
+        div #{guitarid} 
+      div.row 
+        div(class='guitarAttr mr-3') Guitar Brand is: 
+        div #{GBrand} 
+      div.row 
+        div(class='guitarAttr mr-3') Guitar color is: 
+        div #{Gcolor} 
+      div.row 
+        div(class='guitarAttr mr-3') Guitar Cost is: 
+        div #{GCost} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the costume collection 
+      window.location.href='/costumes' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      // Don't need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/costumes' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 
+ 
