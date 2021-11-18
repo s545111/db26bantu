@@ -2,18 +2,26 @@ extends layout
 
 block content
   h1= title
-  - let guitars = results; 
+  - let guitars= results; 
   table(class="table table-stripped table-bordered")
-        thead(style="background-color:red;color:white") 
+        thead(style="background-color:yellow; color:red;font-size:20px;font-family:calibri;") 
             tr
                 td Guitar ID
-                td Guitar Brand 
-                td Guitar Color 
-                td Guitar Cost 
+                td Guitar GBrand
+                td Guitar Gcolor
+                td Guitar GCost 
+                td Update
         tbody 
-            each guitar in guitars 
+            each guitar in guitars
+                - let destination = `dispatch(\"/guitar/update?id=${guitar._id}\")`
                 tr
                     td #{guitar._id}
                     td #{guitar.GBrand}
                     td #{guitar.Gcolor}
                     td #{guitar.GCost}
+                    td
+                      button.btn( class="btn-primary ml-1", onclick= destination) Update
+                script.
+                    function dispatch(path){
+                      window.location.href=path
+                    }

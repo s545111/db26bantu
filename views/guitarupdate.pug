@@ -2,44 +2,44 @@ extends layout
  
 block content 
   h1= title
-  if(toShow == null)
-        h2 No instance to Update
-    else
-  - let guitarid = toShow._id 
-  - let GBrand = toShow.GBrand
-  - let Gcolor = toShow.Gcolor 
-  - let GCost = toShow.GCost 
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{guitarid} 
-  - let actionid = "/resource/guitar/" + guitarid  
- 
-  form(id='GuitarForm', action=actionid, method="PUT") 
-    div.form-group 
-        label.guitarAttr(for='GBrand') Guitar Brand 
-        input#GBrand(type='text', name='GBrand',value= GBrand) 
-    div.form-group 
-        label.guitarAttr(for='Gcolor') Guitar color 
-        input#Gcolor(type='text', name='Gcolor',value= Gcolor) 
-    div.form-group 
-        label.guitarAttr(for='GCost') Guitar cost 
-        input#GCost(type='number', name='GCost',value= GCost) 
-    input(type="submit") 
- 
-  script. 
-    document.forms['GuitarForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
-      // TODO do something here to show user that form is being submitted 
-      fetch(event.target.action, { 
-        method: 'PUT', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-      }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
-      }).then((body) => { 
-        alert("Update succeded") 
-        // TODO handle body 
-      }).catch((error) => { 
-        // TODO handle error 
-        alert("Save failed " + error ) 
-      }); 
-    }); 
+  if (toShow == null) 
+    h2 No instance to Update 
+  else 
+    - let guitarid = toShow._id 
+    - let GBrand = toShow.GBrand 
+    - let Gcolor = toShow.Gcolor 
+    - let GCost = toShow.GCost 
+    div.row(class='mb-2') 
+        div.mr-1 ID is 
+        div #{costumeid} 
+    - let actionid = "/resource/guitar/" + guitarid  
+    
+    form(id='GuitarForm', action=actionid, method="PUT") 
+        div.form-group 
+            label.guitarAttr(for='GBrand') Guitar Brand 
+            input#GBrand(type='text', name='GBrand',value= GBrand) 
+        div.form-group 
+            label.guitarAttr(for='Gcolor') Guitar color 
+            input#Gcolor(type='text', name='Gcolor',value= Gcolor) 
+        div.form-group 
+            label.guitarAttr(for='GCost') Guitar cost 
+            input#GCost(type='number', name='GCost',value= GBrand) 
+        input(type="submit") 
+    
+    script. 
+        document.forms['GuitarForm'].addEventListener('submit', (event) => { 
+        event.preventDefault(); 
+        // TODO do something here to show user that form is being submitted 
+        fetch(event.target.action, { 
+            method: 'PUT', 
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+        }).then((resp) => { 
+            return resp.json(); // or resp.text() or whatever the server sends 
+        }).then((body) => { 
+            alert("Save succeded") 
+            // TODO handle body 
+        }).catch((error) => { 
+            // TODO handle error 
+            alert("Save failed " + error ) 
+        }); 
+        }); 

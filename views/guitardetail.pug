@@ -2,23 +2,23 @@ extends layout
  
 block content 
   h1= title 
-    if(toShow == null)
-    h2 No instance to detail
-  else
-  - let guitarid = toShow._id 
-  - let GBrand = toShow.GBrand 
-  - let Gcolor = toShow.Gcolor 
-  - let GCost = toShow.GCost 
-  div 
-    div.row 
-      div(class='guitarAttr mr-3') Guitar ID is: 
-      div #{guitarid} 
-    div.row 
-      div(class='guitarAttr mr-3') GBrand is: 
-      div #{GBrand} 
-    div.row 
-      div(class='guitarAttr mr-3') Gcolor is: 
-      div #{Gcolor} 
-    div.row 
-      div(class='guitarAttr mr-3') GCost is: 
-      div #{GCost}
+  if (toShow == null) 
+    h2 No instance to Detail 
+  else 
+    - let guitarid = toShow._id 
+    - let GBrand = toShow.GBrand 
+    - let Gcolor = toShow.Gcolor 
+    - let GCost = toShow.GCost 
+    div 
+        div.row 
+        div(class='guitarAttr mr-3') Guitar ID is: 
+        div #{guitarid} 
+        div.row 
+        div(class='guitarAttr mr-3') GBrand is: 
+        div #{GBrand} 
+        div.row 
+        div(class='guitarAttr mr-3') Gcolor is: 
+        div #{Gcolor} 
+        div.row 
+        div(class='guitarAttr mr-3') GCost is: 
+        div #{GCost}
