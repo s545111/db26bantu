@@ -17,4 +17,6 @@ router.put('/resource/guitar/:id', guitar_controller.guitar_update_put);
 router.get('/resource/guitar/:id', guitar_controller.guitar_detail);
 // GET request for list of all guitar items.
 router.get('/resource/guitar', guitar_controller.guitar_list);
+/* GET update guitar page */ 
+router.get('/update', guitar_controlers.guitar_update_Page);
 module.exports = router;
