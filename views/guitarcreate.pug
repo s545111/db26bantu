@@ -6,7 +6,7 @@ block content
   form(id='GuitarForm', action="/resource/guitar", method="POST") 
     div.form-group 
         label.guitarAttr(for='GBrand') Guitar Brand 
-        input#GBrand(type='text', name='GBrand') 
+        input#GBrand(type='text', name='GBrand',minlength="4",maxlength="9") 
     div.form-group 
         label.guitarAttr(for='Gcolor') Guitar color 
         input#Gcolor(type='text', name='Gcolor') 
