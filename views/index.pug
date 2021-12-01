@@ -4,9 +4,11 @@ block content
   if (!user) 
     a(href="/login") Login 
     br 
-    a(href="/register") Register 
+    a(href="/register") Register
+    br
+    a(href="/guitar/update") update
   if (user) 
     p You are currently logged in as #{user.username} 
-    a(href="/guitar") Take me to costumes 
+    a(href="/guitar") Take me to Guitar 
     br 
     a(href="/logout") Logout
